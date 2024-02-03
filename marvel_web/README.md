@@ -1,5 +1,7 @@
 # marvel_web
 
+# autor Darinka Townsend
+
 ## See online
 https://marvel-app-darinka.netlify.app/
 
