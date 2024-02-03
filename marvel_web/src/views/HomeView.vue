@@ -30,13 +30,9 @@
       </header>
       
       <div v-if="loading" class="loading-overlay">
-      <!-- Aquí puedes utilizar un icono de carga, por ejemplo, un spinner -->
       <i class="fa fa-spinner fa-spin"></i>
       <p>Cargando...</p>
       </div>
-
-
-
 
       <div class="heroesDiv">
         <div class="heroesWrapper">
@@ -56,7 +52,7 @@
 </style>
 
 <script>
-import { base_url } from "../api/marvel.ts";
+import { base_url} from "../api/marvel.ts";
 import Serie from '@/components/serie.vue';
 
 export default {
