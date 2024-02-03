@@ -1,0 +1,1 @@
+export const base_url:string = "https://gateway.marvel.com:443/v1/public/series?"
