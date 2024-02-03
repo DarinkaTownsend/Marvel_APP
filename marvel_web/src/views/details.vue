@@ -22,13 +22,17 @@
     <div class= "info"> 
     <div class="detailsD">
       <div class="header">
-        <img :src="`${serie.thumbnail.path}.${serie.thumbnail.extension}`" :alt="serie.title" />
+        <img class="imagen_princ" :src="`${serie.thumbnail.path}.${serie.thumbnail.extension}`" :alt="serie.title" />
       </div>
       
       <div class="detailsA">
         <button @click="toggleFavorite" class="corazon">&#10084;</button>
         <h2 class="title">{{ serie.title }}</h2>
         <p class="texto">{{ serie.description }}</p>
+        <div class="fechas_div">
+          <p class="texto_Fechas">Start Year : {{ serie.startYear }}</p>
+          <p class="texto_Fechas">End Year : {{ serie.endYear }}</p>
+        </div>
       </div>
     </div>
 
@@ -110,11 +114,22 @@
                   const url_comics = `${base_url2}${serieId}/comics?ts=1&apikey=${process.env.VUE_APP_PUBLIC_KEY}&hash=${process.env.VUE_APP_HASH}`;
                   const url_stories = `${base_url2}${serieId}/stories?ts=1&apikey=${process.env.VUE_APP_PUBLIC_KEY}&hash=${process.env.VUE_APP_HASH}`;
                   console.log(url_comics);
-                  const storiesResponse = await this.fetchData(url_stories);
-                  this.stories = storiesResponse.data.results;
+                  try{
+                    const storiesResponse = await this.fetchData(url_stories);
+                    this.stories = storiesResponse.data.results;
+                  }catch(error){
+                      console.error('No cumple con la cantidad minima de Stories', error);
+                  }
 
-                  const comicsResponse = await this.fetchData(url_comics);
-                  this.comics = comicsResponse.data.results;
+                  try{
+                    const comicsResponse = await this.fetchData(url_comics);
+                    this.comics = comicsResponse.data.results;
+                  }catch(error){
+                      console.error('No cumplen con la cantidad mínima de comics');
+                  }
+
+
+                  
 
                   const serieDetailsResponse = await this.fetchData(url_serie_details);
                   this.serie.title = serieDetailsResponse.data.results[0].title;
@@ -152,6 +167,20 @@
 
 <style>
 
+.imagen_princ{
+  width: 60%;
+  height: 20%;
+  border-radius: 4px;
+}
+.fechas_div{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.texto_Fechas{
+    color: white;
+    font-size: 1.3rem;
+}
 .stories{
     border-radius: 4px;
 }

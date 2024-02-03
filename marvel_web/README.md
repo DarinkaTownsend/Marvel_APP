@@ -1,8 +1,22 @@
 # marvel_web
 
+## See online
+https://marvel-app-darinka.netlify.app/
+
+
+
 ## Project setup
 ```
 npm install
+```
+```
+npm install vite
+```
+```
+npm install cors
+```
+```
+npm install pinia
 ```
 
 ### Compiles and hot-reloads for development

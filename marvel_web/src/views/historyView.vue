@@ -18,7 +18,7 @@
         </div>
     </header>
     <div class="contenido">
-            <h2 class="separadorHH">Historial</h2>
+            <h2 class="separadorHH">HISTORY</h2>
             <div class="cartillas">
             <div v-for="item in historial" :key="item.id" class="cartilla">
                 <h3 class="textoHH">{{ item.title }}</h3>
